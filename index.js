@@ -8,7 +8,7 @@ const boardContainer = document.createElement("div");
 boardContainer.setAttribute("class", "container");
 document.querySelector(".content").appendChild(boardContainer);
 
-const boardElements = [];
+export const boardElements = [];
 for (let row = 0; row < 8; row++) {
 	const rowOfElements = [];
 	for (let col = 0; col < 8; col++) {
