@@ -132,29 +132,41 @@ export function moveIsAvailable(board, move) {
 	// Check for hits upwards
 	for (let currentY = move.y - 1, opponentHit = false; currentY >= 0; currentY--) {
 		if (board[currentY][move.x] == "_") break;
-		if (board[currentY][move.x] == move.player && opponentHit) return true;
-		if (board[currentY][move.x] != move.player) opponentHit = true;
+		if (board[currentY][move.x] == move.player) {
+			if (!opponentHit) break;
+			return true;
+		}
+		opponentHit = true;
 	}
 
 	// Check for hits downwards
 	for (let currentY = move.y + 1, opponentHit = false; currentY < board.length; currentY++) {
 		if (board[currentY][move.x] == "_") break;
-		if (board[currentY][move.x] == move.player && opponentHit) return true;
-		if (board[currentY][move.x] != move.player) opponentHit = true;
+		if (board[currentY][move.x] == move.player) {
+			if (!opponentHit) break;
+			return true;
+		}
+		opponentHit = true;
 	}
 
 	// Check for hits to the left
 	for (let currentX = move.x - 1, opponentHit = false; currentX >= 0; currentX--) {
 		if (board[move.y][currentX] == "_") break;
-		if (board[move.y][currentX] == move.player && opponentHit) return true;
-		if (board[move.y][currentX] != move.player) opponentHit = true;
+		if (board[move.y][currentX] == move.player) {
+			if (!opponentHit) break;
+			return true;
+		}
+		opponentHit = true;
 	}
 
 	// Check for hits to the right
 	for (let currentX = move.x + 1, opponentHit = false; currentX < board[0].length; currentX++) {
 		if (board[move.y][currentX] == "_") break;
-		if (board[move.y][currentX] == move.player && opponentHit) return true;
-		if (board[move.y][currentX] != move.player) opponentHit = true;
+		if (board[move.y][currentX] == move.player) {
+			if (!opponentHit) break;
+			return true;
+		}
+		opponentHit = true;
 	}
 
 	// Check for hits to the top left
@@ -164,8 +176,11 @@ export function moveIsAvailable(board, move) {
 		currentPos[0]--, currentPos[1]--
 	) {
 		if (board[currentPos[1]][currentPos[0]] == "_") break;
-		if (board[currentPos[1]][currentPos[0]] == move.player && opponentHit) return true;
-		if (board[currentPos[1]][currentPos[0]] != move.player) opponentHit = true;
+		if (board[currentPos[1]][currentPos[0]] == move.player) {
+			if (!opponentHit) break;
+			return true;
+		}
+		opponentHit = true;
 	}
 
 	// Check for hits to the bottom right
@@ -175,8 +190,11 @@ export function moveIsAvailable(board, move) {
 		currentPos[0]++, currentPos[1]++
 	) {
 		if (board[currentPos[1]][currentPos[0]] == "_") break;
-		if (board[currentPos[1]][currentPos[0]] == move.player && opponentHit) return true;
-		if (board[currentPos[1]][currentPos[0]] != move.player) opponentHit = true;
+		if (board[currentPos[1]][currentPos[0]] == move.player) {
+			if (!opponentHit) break;
+			return true;
+		}
+		opponentHit = true;
 	}
 
 	// Check for hits to the top right
@@ -186,8 +204,11 @@ export function moveIsAvailable(board, move) {
 		currentPos[0]++, currentPos[1]--
 	) {
 		if (board[currentPos[1]][currentPos[0]] == "_") break;
-		if (board[currentPos[1]][currentPos[0]] == move.player && opponentHit) return true;
-		if (board[currentPos[1]][currentPos[0]] != move.player) opponentHit = true;
+		if (board[currentPos[1]][currentPos[0]] == move.player) {
+			if (!opponentHit) break;
+			return true;
+		}
+		opponentHit = true;
 	}
 
 	// Check for hits to the bottom left
@@ -197,8 +218,11 @@ export function moveIsAvailable(board, move) {
 		currentPos[0]--, currentPos[1]++
 	) {
 		if (board[currentPos[1]][currentPos[0]] == "_") break;
-		if (board[currentPos[1]][currentPos[0]] == move.player && opponentHit) return true;
-		if (board[currentPos[1]][currentPos[0]] != move.player) opponentHit = true;
+		if (board[currentPos[1]][currentPos[0]] == move.player) {
+			if (!opponentHit) break;
+			return true;
+		}
+		opponentHit = true;
 	}
 
 	return false;
