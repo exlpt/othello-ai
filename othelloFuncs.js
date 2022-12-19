@@ -1,3 +1,5 @@
+import Move from "./move.js";
+
 export function moveOnBoard(board, move) {
 	let newBoard = JSON.parse(JSON.stringify(board));
 	newBoard[move.y][move.x] = move.player;
@@ -117,10 +119,10 @@ export function scoreBoard(board) {
 	);
 }
 
-export function gameIsFinished(board) {
+export function gameIsFinished(board, currentPlayer) {
 	for (let row = 0; row < board.length; row++) {
 		for (let col = 0; col < board[0].length; col++) {
-			if (board[row][col] == "_") return false;
+			if (moveIsAvailable(board, new Move(col, row, currentPlayer))) return false;
 		}
 	}
 	return true;
